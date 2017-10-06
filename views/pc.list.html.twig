@@ -1,0 +1,47 @@
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<h1>Liste des ordinateurs</h1>
+<form method="get" name="formulaire" action="{{ url('pc.new') }}">
+  <button type="submit">Ajouter</button>
+</form>
+<table class='table'>
+<thead>
+  <tr>
+    <th>ID</th>
+    <th>Nom</th>
+    <th>Marque</th>
+    <th>OS</th>
+    <th>Utilisateur</th>
+    <th>Actions</th>
+  </tr>
+</thead>
+<tbdoy>
+{% for pcs in pc %}
+   <tr>
+     <td>{{pcs.id}}</td>
+     <td>{{pcs.nom}}</td>
+     <td>{{pcs.marque}}</td>
+     <td>{{pcs.os}}</td>
+     <td>{{pcs.idUser}}</td>
+     <td>
+       <form method="post" name="formulaire" action="{{ url('pc.delete', {id: pcs.id}) }}">
+            <button type="submit">Supprimer</button>
+        </form>
+      </td>
+      <td>
+        <form method="get" name="formulaire" action="{{ url('pc.edit', {id: pcs.id}) }}">
+          <button type="submit">Modifier</button>
+        </form>
+      </td>
+   </tr>
+{% endfor %}
+</tbdoy>
+</table>
+<a href="{{url('users.list')}}">Voir les utilisateurs</a>

@@ -1,0 +1,45 @@
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<h2>Formulaire</h2>
+
+{% if pcs is defined %}
+<form method="post" name="formulaire" action="{{ url('pc.save', {id: pcs.id}) }}">
+
+    <input type="hidden" name="id" value={{pcs.id}} />
+
+    <label for="name">Nom : </label>
+    <input type="text" name="nom" value={{pcs.nom}} />
+
+    <label for="name">Marque : </label>
+    <input type="text" name="marque" value={{pcs.marque}}  />
+
+    <label for="name">Os : </label>
+    <input type="text" name="os" value={{pcs.os}}  />
+
+    <label for="name">Id Utilisateur : </label>
+    <input type="text" name="idUser" value={{pcs.idUser}}  />
+    {% else %}
+<form method="post" name="formulaire" action="{{ url('pc.save') }}">
+    <label for="name">Nom : </label>
+    <input type="text" name="nom" />
+
+    <label for="name">Marque : </label>
+    <input type="text" name="marque" />
+
+    <label for="name">Os : </label>
+    <input type="text" name="os" />
+
+    <label for="name">Id Utilisateur : </label>
+    <input type="text" name="idUser" />
+    {% endif %}
+
+    <button type="submit">Envoyer</button>
+
+</form>
